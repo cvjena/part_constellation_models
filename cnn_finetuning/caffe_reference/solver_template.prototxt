@@ -1,0 +1,13 @@
+net: "train_val.prototxt"
+test_iter: 40
+test_interval: ##MAX_ITER##
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 9000
+display: 20
+max_iter: ##MAX_ITER##
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: ##MAX_ITER##
+snapshot_prefix: "model_ft"
