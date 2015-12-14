@@ -1,0 +1,3 @@
+[submodule "lib/caffe_pp"]
+	path = lib/caffe_pp
+	url = https://github.com/cvjena/caffe_pp.git
