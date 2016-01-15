@@ -22,15 +22,12 @@ function setup()
     else
 	fprintf('vl_argparse exists already, skipping...\n');
     end
-   
-    %% Clone caffe
-    !git submodule update --init --recursive
     
     %% Get models
     required_files = {};
-    required_files = [required_files;{'cnn_finetuning/googlenet/model','http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel','405fc5acd08a3bb12de8ee5e23a96bec22f08204'}];
-    required_files = [required_files;{'cnn_finetuning/vgg19/model','http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel','239785e7862442717d831f682bb824055e51e9ba'}];
-    required_files = [required_files;{'cnn_finetuning/caffe_reference/model','http://dl.caffe.berkeleyvision.org/bvlc_reference_caffenet.caffemodel','4c8d77deb20ea792f84eb5e6d0a11ca0a8660a46'}];
+%     required_files = [required_files;{'cnn_finetuning/googlenet/model','http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel','405fc5acd08a3bb12de8ee5e23a96bec22f08204'}];
+%     required_files = [required_files;{'cnn_finetuning/vgg19/model','http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel','239785e7862442717d831f682bb824055e51e9ba'}];
+%     required_files = [required_files;{'cnn_finetuning/caffe_reference/model','http://dl.caffe.berkeleyvision.org/bvlc_reference_caffenet.caffemodel','4c8d77deb20ea792f84eb5e6d0a11ca0a8660a46'}];
 
     for i=1:size(required_files,1)
         if exist(required_files{i,1},'file') 
@@ -47,11 +44,12 @@ function setup()
         end
     end
     
-    fprintf('\n\nSetup done, now go to ./lib/ and compile all libraries and Matlab interfaces!\n');
-    fprintf('1. ''make '' in ./lib/caffe_pp/\n');
-    fprintf('2. ''make mat '' in ./lib/caffe_pp/\n');
-    fprintf('3. ''make'' in ./lib/liblinear-2.1/\n');
-    fprintf('4. ''make'' in ./lib/liblinear-2.1/matlab/\n');
+    fprintf('\n\nSetup done, now clone caffe_pp and go to ./lib/ and compile all libraries and Matlab interfaces!\n');
+    fprintf('1. ''git submodule update --init --recursive'' in the main folder\n');
+    fprintf('2. ''make'' in ./lib/caffe_pp/\n');
+    fprintf('3. ''make mat'' in ./lib/caffe_pp/\n');
+    fprintf('4. ''make'' in ./lib/liblinear-2.1/\n');
+    fprintf('5. ''make'' in ./lib/liblinear-2.1/matlab/\n');
 end
 
 function getlib(url)
